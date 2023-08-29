@@ -1,0 +1,83 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SnowflakeSource",
+						"exportSettings": {
+							"type": "SnowflakeExportCopyCommand"
+						}
+					},
+					"sink": {
+						"type": "SnowflakeSink",
+						"importSettings": {
+							"type": "SnowflakeImportCopyCommand"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "COUNTRY_ID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "COUNTRY_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY_ISO_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRY_ISO_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY_NAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRY_NAME",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SnowflakeTable1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TARGET",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
