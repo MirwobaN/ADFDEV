@@ -1,0 +1,9 @@
+{
+	"name": "ADF-TEST-NM",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "666d0eab-75f5-4ad7-8de7-44e502482e77",
+		"tenantId": "d3d18101-4c65-4933-97cb-51e1569fe116"
+	}
+}
