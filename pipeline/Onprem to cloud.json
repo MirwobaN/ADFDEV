@@ -26,36 +26,195 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"sink": {
-						"type": "DelimitedTextSink",
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "onpremTestDatasource",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy data2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ExcelSource",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						}
+					},
+					"sink": {
+						"type": "SnowflakeSink",
+						"importSettings": {
+							"type": "SnowflakeImportCopyCommand"
 						}
 					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
+						"mappings": [
+							{
+								"source": {
+									"name": "EstimatedCloseDate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ESTIMATEDCLOSEDATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Opportunity ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OPPORTUNITY_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales Stage ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALES_STAGE_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Account ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ACCOUNT_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Partner ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PARTNER_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Product ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductRevenue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_REVENUE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "FactoredProductRevenue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FACTOREDPRODUCTREVENUE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Create Date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATE_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Opportunity Days",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OPPORTUNITY_DAYS",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "YEAR",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Month_Number",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MONTH_NUMBER",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Month",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MONTH",
+									"type": "String"
+								}
+							}
+						]
 					}
 				},
 				"inputs": [
 					{
-						"referenceName": "Test",
+						"referenceName": "blobNMdata",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "TestCloud",
+						"referenceName": "ONpremtestdatatarget",
 						"type": "DatasetReference"
 					}
 				]
