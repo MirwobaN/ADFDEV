@@ -5,12 +5,7 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"sasUri": "https://nafadftest.blob.core.windows.net/nafadftest",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjMzc1MDhmZC1iOGU3LTRmMmItYmNjMC1iMWU3MjhiYzczODciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
-		},
-		"connectVia": {
-			"referenceName": "NAFIRTEST",
-			"type": "IntegrationRuntimeReference"
+			"sasUri": "https://nafadftest.blob.core.windows.net/nafadftest"
 		}
 	}
 }
