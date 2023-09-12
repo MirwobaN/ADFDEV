@@ -40,6 +40,164 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "EstimatedCloseDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EstimatedCloseDate",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Opportunity ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Opportunity ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales Stage ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Sales Stage ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Account ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Account ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Partner ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Partner ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Product ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Product ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductRevenue",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ProductRevenue",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FactoredProductRevenue",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FactoredProductRevenue",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Create Date",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Create Date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Opportunity Days",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Opportunity Days",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Year",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Year",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Month_Number",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Month_Number",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Month",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Month",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -49,7 +207,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "onpremTestDatasource",
+						"referenceName": "onpremtestdatasource",
 						"type": "DatasetReference"
 					}
 				],
@@ -63,14 +221,7 @@
 			{
 				"name": "Copy data2",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Copy data1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -80,14 +231,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "ExcelSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						}
-					},
 					"sink": {
 						"type": "SnowflakeSink",
 						"importSettings": {
@@ -100,7 +243,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "EstimatedCloseDate",
+									"name": "Receipt No",
 									"type": "String"
 								},
 								"sink": {
@@ -110,7 +253,7 @@
 							},
 							{
 								"source": {
-									"name": "Opportunity ID",
+									"name": "Completion Time",
 									"type": "String"
 								},
 								"sink": {
@@ -120,7 +263,7 @@
 							},
 							{
 								"source": {
-									"name": "Sales Stage ID",
+									"name": "Details",
 									"type": "String"
 								},
 								"sink": {
@@ -130,7 +273,7 @@
 							},
 							{
 								"source": {
-									"name": "Account ID",
+									"name": "Transaction Status",
 									"type": "String"
 								},
 								"sink": {
@@ -140,7 +283,7 @@
 							},
 							{
 								"source": {
-									"name": "Partner ID",
+									"name": "Paid In",
 									"type": "String"
 								},
 								"sink": {
@@ -150,7 +293,7 @@
 							},
 							{
 								"source": {
-									"name": "Product ID",
+									"name": "Withdrawn",
 									"type": "String"
 								},
 								"sink": {
@@ -160,7 +303,7 @@
 							},
 							{
 								"source": {
-									"name": "ProductRevenue",
+									"name": "Balance",
 									"type": "String"
 								},
 								"sink": {
@@ -170,7 +313,7 @@
 							},
 							{
 								"source": {
-									"name": "FactoredProductRevenue",
+									"name": "Reciepent Account Number",
 									"type": "String"
 								},
 								"sink": {
@@ -180,7 +323,7 @@
 							},
 							{
 								"source": {
-									"name": "Create Date",
+									"name": "Reciepent Phone Number",
 									"type": "String"
 								},
 								"sink": {
@@ -190,7 +333,7 @@
 							},
 							{
 								"source": {
-									"name": "Opportunity Days",
+									"name": "Sender Account Number",
 									"type": "String"
 								},
 								"sink": {
@@ -200,7 +343,7 @@
 							},
 							{
 								"source": {
-									"name": "Year",
+									"name": "Sender Phone Number",
 									"type": "String"
 								},
 								"sink": {
@@ -210,7 +353,7 @@
 							},
 							{
 								"source": {
-									"name": "Month_Number",
+									"name": "Agent Till",
 									"type": "String"
 								},
 								"sink": {
@@ -220,7 +363,7 @@
 							},
 							{
 								"source": {
-									"name": "Month",
+									"name": "Category",
 									"type": "String"
 								},
 								"sink": {
@@ -231,15 +374,9 @@
 						]
 					}
 				},
-				"inputs": [
-					{
-						"referenceName": "blobNMdata",
-						"type": "DatasetReference"
-					}
-				],
 				"outputs": [
 					{
-						"referenceName": "ONpremtestdatatarget",
+						"referenceName": "Snftestdatatarget",
 						"type": "DatasetReference"
 					}
 				]
