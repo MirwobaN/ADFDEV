@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "FileServerLocation",
-				"fileName": "final Sample.csv"
+				"fileName": "Opportunity Tracking Sample.xlsx"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
