@@ -5,8 +5,12 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"sasUri": "https://nafadftest.blob.core.windows.net/nafadftest",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDREOTlCQjY1LTlEQzgtNDFCRS04MjlELTQ0QUIwMDQ2Njc0MV82ZWZkNWUzYS1lYTY3LTRlM2QtOWFiNS1jZWM0NGFiYmYzMDEiDQp9"
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=nafadftest;EndpointSuffix=core.windows.net;",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4OGUyZGFkNS02ZmUzLTQzNDEtOWM4Mi04ZTIyZThiYTFkZGIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "NAFIRTEST",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
