@@ -1,0 +1,79 @@
+{
+	"name": "Test",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "FileServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "final Sample.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Receipt No.",
+				"type": "String"
+			},
+			{
+				"name": "Completion Time",
+				"type": "String"
+			},
+			{
+				"name": "Details",
+				"type": "String"
+			},
+			{
+				"name": "Transaction Status",
+				"type": "String"
+			},
+			{
+				"name": "Paid In",
+				"type": "String"
+			},
+			{
+				"name": "Withdrawn",
+				"type": "String"
+			},
+			{
+				"name": "Balance",
+				"type": "String"
+			},
+			{
+				"name": "Reciepent Account Number",
+				"type": "String"
+			},
+			{
+				"name": "Reciepent Phone Number",
+				"type": "String"
+			},
+			{
+				"name": "Sender Account Number",
+				"type": "String"
+			},
+			{
+				"name": "Sender Phone Number",
+				"type": "String"
+			},
+			{
+				"name": "Agent Till",
+				"type": "String"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			}
+		]
+	}
+}
