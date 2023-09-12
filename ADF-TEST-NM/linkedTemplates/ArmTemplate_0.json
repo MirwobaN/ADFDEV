@@ -11,13 +11,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Snowflake1'"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
-		},
 		"FileServer1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'FileServer1'"
+		},
+		"AzureBlobStorage1_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'AzureBlobStorage1'"
 		},
 		"FileServer1_properties_typeProperties_host": {
 			"type": "string",
@@ -244,7 +244,7 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+					"sasUri": "[parameters('AzureBlobStorage1_sasUri')]"
 				},
 				"connectVia": {
 					"referenceName": "NAFIRTEST",
@@ -277,6 +277,88 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/NAFIRTEST')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/cloudblobsource')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Opportunity Tracking Sample.txt",
+						"container": "nafadftest"
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\n",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "EstimatedCloseDate",
+						"type": "String"
+					},
+					{
+						"name": "Opportunity ID",
+						"type": "String"
+					},
+					{
+						"name": "Sales Stage ID",
+						"type": "String"
+					},
+					{
+						"name": "Account ID",
+						"type": "String"
+					},
+					{
+						"name": "Partner ID",
+						"type": "String"
+					},
+					{
+						"name": "Product ID",
+						"type": "String"
+					},
+					{
+						"name": "ProductRevenue",
+						"type": "String"
+					},
+					{
+						"name": "FactoredProductRevenue",
+						"type": "String"
+					},
+					{
+						"name": "Create Date",
+						"type": "String"
+					},
+					{
+						"name": "Opportunity Days",
+						"type": "String"
+					},
+					{
+						"name": "Year",
+						"type": "String"
+					},
+					{
+						"name": "Month_Number",
+						"type": "String"
+					},
+					{
+						"name": "Month",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
 			]
 		},
 		{
@@ -724,6 +806,60 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "onpremCopycloud",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "SnowflakeSink",
+								"importSettings": {
+									"type": "SnowflakeImportCopyCommand"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "cloudblobsource",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Snftestdatatarget",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
@@ -734,7 +870,9 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/onpremtestdatasource')]",
-				"[concat(variables('factoryId'), '/datasets/cloudblobtrgt')]"
+				"[concat(variables('factoryId'), '/datasets/cloudblobtrgt')]",
+				"[concat(variables('factoryId'), '/datasets/cloudblobsource')]",
+				"[concat(variables('factoryId'), '/datasets/Snftestdatatarget')]"
 			]
 		},
 		{
