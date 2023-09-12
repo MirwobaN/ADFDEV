@@ -8,6 +8,18 @@
 		"Snowflake1_connectionString": {
 			"value": ""
 		},
+		"FileServer1_password": {
+			"value": ""
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"FileServer1_properties_typeProperties_host": {
+			"value": "E:\\Test"
+		},
+		"FileServer1_properties_typeProperties_userId": {
+			"value": "DESKTOP-8M4AR5A\\admin"
+		},
 		"containerUri": {
 			"value": ""
 		},
