@@ -1,5 +1,5 @@
 {
-	"name": "ONpremtestdatatarget",
+	"name": "Snftestdatatarget",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Snowflake1",
