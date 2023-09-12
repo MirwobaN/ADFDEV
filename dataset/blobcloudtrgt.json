@@ -1,0 +1,19 @@
+{
+	"name": "blobcloudtrgt",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "nafadftest"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}
