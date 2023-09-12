@@ -1,0 +1,95 @@
+{
+	"name": "ONpremtestdatatarget",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "ESTIMATEDCLOSEDATE",
+				"type": "TIMESTAMP_NTZ",
+				"precision": 29,
+				"scale": 9
+			},
+			{
+				"name": "OPPORTUNITY_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "SALES_STAGE_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "ACCOUNT_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "PARTNER_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "PRODUCT_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "PRODUCT_REVENUE",
+				"type": "NUMBER",
+				"precision": 34,
+				"scale": 2
+			},
+			{
+				"name": "FACTOREDPRODUCTREVENUE",
+				"type": "NUMBER",
+				"precision": 34,
+				"scale": 2
+			},
+			{
+				"name": "CREATE_DATE",
+				"type": "TIMESTAMP_NTZ",
+				"precision": 29,
+				"scale": 9
+			},
+			{
+				"name": "OPPORTUNITY_DAYS",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "YEAR",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "MONTH_NUMBER",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "MONTH",
+				"type": "VARCHAR",
+				"precision": 3,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "QA",
+			"table": "ADFTEST"
+		}
+	}
+}
