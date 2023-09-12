@@ -39,7 +39,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data1",
+						"name": "onpremCopycloud",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -76,6 +76,164 @@
 							"enableStaging": false,
 							"translator": {
 								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "EstimatedCloseDate",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "EstimatedCloseDate",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Opportunity ID",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Opportunity ID",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Sales Stage ID",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Sales Stage ID",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Account ID",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Account ID",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Partner ID",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Partner ID",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Product ID",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Product ID",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ProductRevenue",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ProductRevenue",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "FactoredProductRevenue",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "FactoredProductRevenue",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Create Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Create Date",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Opportunity Days",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Opportunity Days",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Year",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Year",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Month_Number",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Month_Number",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Month",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Month",
+											"type": "String",
+											"physicalType": "String"
+										}
+									}
+								],
 								"typeConversion": true,
 								"typeConversionSettings": {
 									"allowDataTruncation": true,
@@ -85,14 +243,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "Test",
+								"referenceName": "onpremtestdatasource",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "TestCloud",
+								"referenceName": "cloudblobtrgt",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -106,8 +264,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Test')]",
-				"[concat(variables('factoryId'), '/datasets/TestCloud')]"
+				"[concat(variables('factoryId'), '/datasets/onpremtestdatasource')]",
+				"[concat(variables('factoryId'), '/datasets/cloudblobtrgt')]"
 			]
 		},
 		{
@@ -155,6 +313,106 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Snftestdatatarget')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Snowflake1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SnowflakeTable",
+				"schema": [
+					{
+						"name": "ESTIMATEDCLOSEDATE",
+						"type": "TIMESTAMP_NTZ",
+						"precision": 29,
+						"scale": 9
+					},
+					{
+						"name": "OPPORTUNITY_ID",
+						"type": "NUMBER",
+						"precision": 38,
+						"scale": 0
+					},
+					{
+						"name": "SALES_STAGE_ID",
+						"type": "NUMBER",
+						"precision": 38,
+						"scale": 0
+					},
+					{
+						"name": "ACCOUNT_ID",
+						"type": "NUMBER",
+						"precision": 38,
+						"scale": 0
+					},
+					{
+						"name": "PARTNER_ID",
+						"type": "NUMBER",
+						"precision": 38,
+						"scale": 0
+					},
+					{
+						"name": "PRODUCT_ID",
+						"type": "NUMBER",
+						"precision": 38,
+						"scale": 0
+					},
+					{
+						"name": "PRODUCT_REVENUE",
+						"type": "NUMBER",
+						"precision": 34,
+						"scale": 2
+					},
+					{
+						"name": "FACTOREDPRODUCTREVENUE",
+						"type": "NUMBER",
+						"precision": 34,
+						"scale": 2
+					},
+					{
+						"name": "CREATE_DATE",
+						"type": "TIMESTAMP_NTZ",
+						"precision": 29,
+						"scale": 9
+					},
+					{
+						"name": "OPPORTUNITY_DAYS",
+						"type": "NUMBER",
+						"precision": 38,
+						"scale": 0
+					},
+					{
+						"name": "YEAR",
+						"type": "NUMBER",
+						"precision": 38,
+						"scale": 0
+					},
+					{
+						"name": "MONTH_NUMBER",
+						"type": "NUMBER",
+						"precision": 38,
+						"scale": 0
+					},
+					{
+						"name": "MONTH",
+						"type": "VARCHAR",
+						"precision": 3,
+						"scale": 0
+					}
+				],
+				"typeProperties": {
+					"schema": "QA",
+					"table": "ADFTEST"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Snowflake1')]"
 			]
 		},
 		{
@@ -238,20 +496,20 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Test')]",
+			"name": "[concat(parameters('factoryName'), '/cloudblobtrgt')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "FileServer1",
+					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "FileServerLocation",
-						"fileName": "Opportunity Tracking Sample.xlsx"
+						"type": "AzureBlobStorageLocation",
+						"container": "nafadftest"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -260,7 +518,7 @@
 				},
 				"schema": [
 					{
-						"name": "Receipt No.",
+						"name": "Receipt No",
 						"type": "String"
 					},
 					{
@@ -318,34 +576,87 @@
 				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/FileServer1')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/TestCloud')]",
+			"name": "[concat(parameters('factoryName'), '/onpremtestdatasource')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
+					"referenceName": "FileServer1",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "nafadftest"
+						"type": "FileServerLocation",
+						"fileName": "Opportunity Tracking Sample.csv"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
-				"schema": []
+				"schema": [
+					{
+						"name": "EstimatedCloseDate",
+						"type": "String"
+					},
+					{
+						"name": "Opportunity ID",
+						"type": "String"
+					},
+					{
+						"name": "Sales Stage ID",
+						"type": "String"
+					},
+					{
+						"name": "Account ID",
+						"type": "String"
+					},
+					{
+						"name": "Partner ID",
+						"type": "String"
+					},
+					{
+						"name": "Product ID",
+						"type": "String"
+					},
+					{
+						"name": "ProductRevenue",
+						"type": "String"
+					},
+					{
+						"name": "FactoredProductRevenue",
+						"type": "String"
+					},
+					{
+						"name": "Create Date",
+						"type": "String"
+					},
+					{
+						"name": "Opportunity Days",
+						"type": "String"
+					},
+					{
+						"name": "Year",
+						"type": "String"
+					},
+					{
+						"name": "Month_Number",
+						"type": "String"
+					},
+					{
+						"name": "Month",
+						"type": "String"
+					}
+				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+				"[concat(variables('factoryId'), '/linkedServices/FileServer1')]"
 			]
 		},
 		{
