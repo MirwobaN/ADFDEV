@@ -1,0 +1,25 @@
+{
+	"name": "OnpremtoAzuretrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Onprem to cloud",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2023-09-12T17:23:00",
+				"endTime": "2023-09-13T17:23:00",
+				"timeZone": "Eastern Standard Time"
+			}
+		}
+	}
+}
