@@ -1,0 +1,75 @@
+{
+	"name": "onpremtestdatasource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "FileServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "Opportunity Tracking Sample.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "EstimatedCloseDate",
+				"type": "String"
+			},
+			{
+				"name": "Opportunity ID",
+				"type": "String"
+			},
+			{
+				"name": "Sales Stage ID",
+				"type": "String"
+			},
+			{
+				"name": "Account ID",
+				"type": "String"
+			},
+			{
+				"name": "Partner ID",
+				"type": "String"
+			},
+			{
+				"name": "Product ID",
+				"type": "String"
+			},
+			{
+				"name": "ProductRevenue",
+				"type": "String"
+			},
+			{
+				"name": "FactoredProductRevenue",
+				"type": "String"
+			},
+			{
+				"name": "Create Date",
+				"type": "String"
+			},
+			{
+				"name": "Opportunity Days",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Month_Number",
+				"type": "String"
+			},
+			{
+				"name": "Month",
+				"type": "String"
+			}
+		]
+	}
+}
