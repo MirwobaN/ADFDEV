@@ -14,9 +14,8 @@
 				"container": "nafadftest"
 			},
 			"columnDelimiter": ",",
-			"rowDelimiter": "\n",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
