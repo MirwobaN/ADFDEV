@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"sasUri": "https://nafadftest.blob.core.windows.net/nafadftest",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjMGZmY2M5ZC0zNWZkLTQ3NmMtOTBmNC05ODQxYjBhZTc0YjgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=nafadftest;EndpointSuffix=core.windows.net;",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwYzM2NjIxNC05MGRjLTQ4ODQtODM5NC01Y2M3MWMzMDNiZTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "NAFIRTEST",
